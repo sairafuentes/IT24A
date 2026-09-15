@@ -46,15 +46,15 @@ function createDoneButton(li){
      doneBtn.onclick = () => {
         console.log(li);
         li.classList.add("done");
-        const buttons - li.querySelectorAll("button");
+        const buttons = li.querySelectorAll("button");
 
-        button.forEach(btn -> {
+        buttons.forEach(btn => {
             btn.disabled = true;
         });
         console.log("Task Completed" . li.textContent. Date);
      };
      return doneBtn;
-
+}
     </script>
 
 </body>
