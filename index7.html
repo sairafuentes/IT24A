@@ -38,7 +38,7 @@ function addTaskItem(taskItemText){
 
      const doneBtn = createDoneButton(li);
     li.appendChild(doneBtn);
-
+}
     function createDoneButton(li){
     const doneBtn = document.createElement("button");
      doneBtn.textContent = "Done";
@@ -51,7 +51,7 @@ function addTaskItem(taskItemText){
         buttons.forEach(btn => {
             btn.disabled = true;
         });
-        console.log("Task Completed" . li.textContent. Date);
+        console.log("Task Completed: " + li.textContent + " at " + new Date());
      };
      return doneBtn;
 }
