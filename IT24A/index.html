@@ -41,6 +41,9 @@ function addTaskItem(taskItemText){
     li.appendChild(doneBtn);
      const editBtn = createEditBtn(li, taskSpan);
         li.appendChild(editBtn);
+         const deleteBtn = createDeleteBtn(li, taskSpan);
+        li.appendChild(deleteBtn);
+
 }
 function createDoneButton(li){
     const doneBtn = document.createElement("button");
@@ -75,7 +78,19 @@ function createDoneButton(li){
             alert("No changes made"); 
         }
     }
+     function createDeleteBtn(li,taskSpan){
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.style.marginLeft = "8px"; 
+        deleteBtn.onclick = () => handleDeleteClick(li);
+        return deleteBtn;   
+        }
+        function handleDeleteClick(li){
+            li.remove();
+            alert("task deleted");
+            }
     </script>
+
 
 </body>
 </html>
