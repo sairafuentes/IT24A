@@ -35,7 +35,47 @@ function addTaskItem(taskItemText){
     li.appendChild(taskSpan);
 
     document.getElementById("taskList").appendChild(li);
+
+     
+    const doneBtn = createDoneButton (li);
+    li.appendChild(doneBtn);
+    const editBtn = createEditBtn(li, taskSpan);
+        li.appendChild(editBtn);
+
 }
+function createDoneButton(li){
+const doneBtn = document.createElement("button");
+doneBtn.textContent = "Done";
+
+doneBtn.onclick = () => {
+    console.log(li);
+    li.classList.add('done');
+    const buttons = li.querySelectorAll ("button");
+    buttons.forEach(btn =>{
+        btn.disabled=true;
+    });
+    console.log("Task Completed", li.textContent, Date());
+
+}
+return doneBtn;
+}
+ function createEditBtn(li,taskSpan){
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.style.marginLeft = "8px"; 
+        editBtn.onclick = () => handleEdit(li);
+        return editBtn;   
+        }
+        function handleEdit(li){
+        const currentText = li.firstChild.textContent.trim();
+        const newText = prompt("Edit task", currentText);
+        if (newText !== null && newText.trim() !== "") {
+            li.firstChild.textContent = newText.trim();
+            alert("Updated Task");
+        }else{
+            alert("No changes made"); 
+        }
+    }
     </script>
 
 </body>
