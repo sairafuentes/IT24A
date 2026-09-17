@@ -27,6 +27,7 @@ function getTaskText() {
 function addTask(){
     const taskText = getTaskText();
     addTaskItem(taskText);
+
 }
 function addTaskItem(taskItemText){
     const li = document.createElement("li");
@@ -38,6 +39,11 @@ function addTaskItem(taskItemText){
 
     const doneBtn = createDoneButton(li);
     li.appendChild(doneBtn);
+     const editBtn = createEditBtn(li, taskSpan);
+        li.appendChild(editBtn);
+         const deleteBtn = createDeleteBtn(li, taskSpan);
+        li.appendChild(deleteBtn);
+
 }
 function createDoneButton(li){
     const doneBtn = document.createElement("button");
@@ -55,7 +61,36 @@ function createDoneButton(li){
      };
      return doneBtn;
 }
+ function createEditBtn(li,taskSpan){
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.style.marginLeft = "8px"; 
+        editBtn.onclick = () => handleEdit(li);
+        return editBtn;   
+        }
+        function handleEdit(li){
+        const currentText = li.firstChild.textContent.trim();
+        const newText = prompt("Edit task", currentText);
+        if (newText !== null && newText.trim() !== "") {
+            li.firstChild.textContent = newText.trim();
+            alert("Updated Task");
+        }else{
+            alert("No changes made"); 
+        }
+    }
+     function createDeleteBtn(li,taskSpan){
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.style.marginLeft = "8px"; 
+        deleteBtn.onclick = () => handleDeleteClick(li);
+        return deleteBtn;   
+        }
+        function handleDeleteClick(li){
+            li.remove();
+            alert("task deleted");
+            }
     </script>
+
 
 </body>
 </html>
