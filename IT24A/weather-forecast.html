@@ -49,6 +49,7 @@
         const data = await response.json();
 
         getWeatherByCoordinates(
+        await getWeatherByCoordinates(
             data.coord.lat,
             data.coord.lon
         );
